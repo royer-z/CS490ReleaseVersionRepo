@@ -1,6 +1,22 @@
 /*jshint esversion: 6 */
 //"use strict"; // Avoids error message //Use in functions
 
+var fData = new FormData();
+
+fetch('checkLogin.php', {
+	method: 'POST',
+	body: fData
+})
+.then( res => res.json()) // Once we have a response
+.then (newData => { // Data from response ^
+	if (newData === 'loggedOut') {
+		window.location.replace("index.html");
+	}
+	else {
+		console.log(newData);
+	}
+});
+
 var screenDisplay = document.getElementById('show');
 
 document.getElementById('takeE').onchange = function() {
@@ -33,6 +49,9 @@ function takeExam() {
 		if(newData === 'error') {
 			error.innerHTML = "ERROR GETTING AVAILABLE EXAMS";
 		}
+		else if (newData === 'loggedOut') {
+			window.location.replace("index.html");
+		}
 		else{
 			var item;
 			for (item = 0; item < newData.openExams.length; item++) {
@@ -61,6 +80,9 @@ function viewGrades() {
 	.then (newData => { // Data from response ^
 		if(newData === 'error') {
 			selectGradeForm.innerHTML = "ERROR GETTING EXAMS";
+		}
+		else if (newData === 'loggedOut') {
+			window.location.replace("index.html");
 		}
 		else{
 			var item;
@@ -92,6 +114,9 @@ function takeChecked() {
 	.then (newData => { // Data from response ^
 		if(newData === 'empty') {
 			error.innerHTML = "ERROR GETTING EXAM TO TAKE";
+		}
+		else if (newData === 'loggedOut') {
+			window.location.replace("index.html");
 		}
 		else {
 			screenDisplay.innerHTML = "<div><h1>Please complete the "+newData.examName+" exam:</h1><div id='displayExamDiv'><form id='inputExamForm'></form><p id='answerError'>Result:</p></div></div>";
@@ -136,6 +161,9 @@ function submitExamAnswers() {
 		if(newData === 'empty') {
 			answerError.innerHTML = "ERROR IN SUBMISSION";
 		}
+		else if (newData === 'loggedOut') {
+			window.location.replace("index.html");
+		}
 		else {
 			answerError.innerHTML = "Exam Submitted!";
 		}
@@ -159,6 +187,9 @@ function viewChecked() {
 	.then (newData => { // Data from response ^
 		if(newData === 'empty') {
 			viewReportResult.innerHTML = "Please select an exam.";
+		}
+		else if (newData === 'loggedOut') {
+			window.location.replace("index.html");
 		}
 		else{
 			viewGradesDiv.innerHTML = "";

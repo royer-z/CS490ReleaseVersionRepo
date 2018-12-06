@@ -28,6 +28,10 @@ else { // Send data using cURL
 	$objResult = json_decode($cResult);
 	if ($objResult->instructor == "false" && $objResult->loginSucceeded == "true"){
 		$_SESSION['studentId'] = $objResult->studentId;
+		$_SESSION['loggedIn'] = 'true';
+	}
+	elseif ($objResult->instructor == "true" && $objResult->loginSucceeded == "true") {
+		$_SESSION['loggedIn'] = 'true';
 	}
 	
 	echo $cResult;

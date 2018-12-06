@@ -2,27 +2,23 @@
 // cURL in PHP
 session_start();
 
-session_start();
-
 if ($_SESSION['loggedIn'] == 'false') {
 	echo json_encode('loggedOut');
 }
 else {
-	$examId = $_POST['pickedE'];
+	$questionId = $_POST['questionId'];
 
-	if($examId === '') { // Detect if any form field is empty
-		echo json_encode('empty');
+	if(empty($questionId)) { // Detect if empty
+		echo json_encode('error');
 	}
 	else { // Send data using cURL
-		$_SESSION['examId'] = $examId;
-
 		$formData;
-		$formData->examId = $examId;
+		$formData->questionId = $questionId;
 
 		$formDataJSON = json_encode($formData);
 
 		$cSession = curl_init();
-		curl_setopt($cSession, CURLOPT_URL, "https://web.njit.edu/~tmd24/CS490/api/v1/getExam.php");
+		curl_setopt($cSession, CURLOPT_URL, "https://web.njit.edu/~tmd24/CS490/api/v1/getQuestion.php");
 		curl_setopt($cSession, CURLOPT_POST, TRUE);
 		curl_setopt($cSession, CURLOPT_POSTFIELDS, $formDataJSON);
 		curl_setopt($cSession, CURLOPT_RETURNTRANSFER, TRUE);

@@ -1,48 +1,35 @@
 <?php
 // cURL in PHP
-$filterInput= $_POST['filterInput'];
+session_start();
 
-if(empty($filterInput)) {
-	$formData;
-	$formData->action = $filterInput;
-	
-	$formDataJSON = json_encode($formData);
-	
-	$cSession = curl_init();
-	curl_setopt($cSession, CURLOPT_URL, "https://web.njit.edu/~tmd24/CS490/api/v1/getQuestionList.php");
-	curl_setopt($cSession, CURLOPT_POST, TRUE);
-	curl_setopt($cSession, CURLOPT_POSTFIELDS, $formDataJSON);
-	curl_setopt($cSession, CURLOPT_RETURNTRANSFER, TRUE);
-	$cResult = curl_exec($cSession);
-	curl_close($cSession);
-	echo $cResult;
+if ($_SESSION['loggedIn'] == 'false') {
+	echo json_encode('loggedOut');
 }
-else { // Send data using cURL
-	$formData;
+else {
+	$topicInput= $_POST['topicInput'];
+	$difficultyInput= $_POST['difficultyInput'];
 
-	if (strpos($filterInput, ',') !== FALSE) {
-		$filterInput = explode(',', $filterInput);
-		$topic = $filterInput[0];
-		$difficulty = $filterInput[1];
-		if (strpos($difficulty, ' ')) {
-			$difficulty = explode(' ', $difficulty);
-			$difficulty = $difficulty[1];
-		}
-		$formData->topic = $topic;
-		$formData->difficulty = $difficulty;
+	if ($topicInput === 'none' && $difficultyInput === 'none') {
+		$formData->action = array();
 	}
-	else {
-		if ($filterInput === '1' || $filterInput === '2' || $filterInput === '3') {
-			$formData->difficulty = $filterInput;
-		}
-		else {
-			$formData->topic = $filterInput;
-		}
-		
+	elseif ($topicInput !== 'none' && $difficultyInput !== 'none') {
+		$formData;
+		$formData->topic = $topicInput;
+		$formData->difficulty = $difficultyInput;
 	}
-	
+	elseif ($topicInput !== 'none' && $difficultyInput === 'none') {
+		$formData;
+		$formData->topic = $topicInput;
+
+	}
+	elseif ($topicInput === 'none' && $difficultyInput !== 'none') {
+		$formData;
+		$formData->difficulty = $difficultyInput;
+
+	}
+
 	$formDataJSON = json_encode($formData);
-	
+
 	$cSession = curl_init();
 	curl_setopt($cSession, CURLOPT_URL, "https://web.njit.edu/~tmd24/CS490/api/v1/getQuestionList.php");
 	curl_setopt($cSession, CURLOPT_POST, TRUE);
