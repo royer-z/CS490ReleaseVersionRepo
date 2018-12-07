@@ -16,12 +16,12 @@ loginForm.addEventListener('submit', function(event) {
 	.then( res => res.json()) // Once we have a response
 	.then (newData => { // Data from response ^
 		if(newData === 'empty') {
+			loginFormResult.innerHTML = "";
 			var textNode = document.createTextNode("Please fill in all fields.");
 			loginFormResult.appendChild(textNode);
 		}
-		else{ 
-			// Check if login is success and if instructor or student:
-			// Middle may need to return student/professor UCID to redirect to correct pages
+		else{ // Check if login is success and if instructor or student:
+			// Records user UCID
 			var condition = 'true';
 			for(var value of fData.values()) {
 				if(condition === 'true') {
@@ -33,13 +33,43 @@ loginForm.addEventListener('submit', function(event) {
 				}
 			}
 			if(newData.loginSucceeded === 'true' && newData.instructor === 'true') {
-				loginFormResult.innerHTML = "Welcome professor!<br>"+"Login success: "+newData.loginSucceeded+"<br>"+"Instructor: "+newData.instructor+"<br>";
+				loginFormResult.innerHTML = "";
+				var textNode = document.createTextNode("Welcome professor!");
+				loginFormResult.appendChild(textNode);
+				/*
+				var node = document.createElement("BR");
+				loginFormResult.appendChild(node);
+				
+				textNode = document.createTextNode("Login Success: "+newData.loginSucceeded);
+				loginFormResult.appendChild(textNode);
+				
+				node = document.createElement("BR");
+				loginFormResult.appendChild(node);
+				
+				textNode = document.createTextNode("Instructor: "+newData.instructor);
+				loginFormResult.appendChild(textNode);
+				*/
 				if(ucid === 'ab123') {
 					window.location.replace('instructor.html'); // redirect to instructor page
 				}
 			}
 			else if(newData.loginSucceeded === 'true' && newData.instructor === 'false') {
-				loginFormResult.innerHTML = "Welcome student!<br>"+"Login success: "+newData.loginSucceeded+"<br>"+"Instructor: "+newData.instructor+"<br>";
+				loginFormResult.innerHTML = "";
+				var textNode = document.createTextNode("Welcome student!");
+				loginFormResult.appendChild(textNode);
+				/*
+				var node = document.createElement("BR");
+				loginFormResult.appendChild(node);
+				
+				textNode = document.createTextNode("Login Success: "+newData.loginSucceeded);
+				loginFormResult.appendChild(textNode);
+				
+				node = document.createElement("BR");
+				loginFormResult.appendChild(node);
+				
+				textNode = document.createTextNode("Instructor: "+newData.instructor);
+				loginFormResult.appendChild(textNode);
+				*/
 				if(ucid === 'Ma123') {
 					window.location.replace('student1.html'); // redirect to student page
 				}
@@ -48,7 +78,16 @@ loginForm.addEventListener('submit', function(event) {
 				}
 			}
 			else { // If login is unsuccessful: Display prompt
-				loginFormResult.innerHTML = "Incorrect login information.<br>"+" Login Success: "+newData.loginSucceeded+"<br>";
+				loginFormResult.innerHTML = "";
+				var textNode = document.createTextNode("Incorrect login information.");
+				loginFormResult.appendChild(textNode);
+				/*
+				var node = document.createElement("BR");
+				loginFormResult.appendChild(node);
+				
+				textNode = document.createTextNode("Login Success: "+newData.loginSucceeded);
+				loginFormResult.appendChild(textNode);
+				*/
 			}
 		}
 	});

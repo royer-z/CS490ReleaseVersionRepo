@@ -1,23 +1,9 @@
 /*jshint esversion: 6 */
 //"use strict"; // Avoids error message //Use in functions
 
-var fData = new FormData();
+checkLogin();
 
-fetch('checkLogin.php', {
-	method: 'POST',
-	body: fData
-})
-.then( res => res.json()) // Once we have a response
-.then (newData => { // Data from response ^
-	if (newData === 'loggedOut') {
-		window.location.replace("index.html");
-	}
-	else {
-		console.log(newData);
-	}
-});
-
-var screenDisplay = document.getElementById('show');
+var splitScreen = document.getElementById('splitScreen');
 var filterTopic = 'none';
 var filterDifficulty = 'none';
 
@@ -41,6 +27,24 @@ document.getElementById('releaseG').onchange = function() {
 	releaseGrade();
 };
 
+function checkLogin() {
+	var fData = new FormData();
+	
+	fetch('checkLogin.php', {
+		method: 'POST',
+		body: fData
+	})
+	.then( res => res.json()) // Once we have a response
+	.then (newData => { // Data from response ^
+		if (newData === 'loggedOut') {
+			window.location.replace("index.html");
+		}
+		else {
+			console.log(newData);
+		}
+	});
+}
+
 // Topics: conditional execution, iteration, strings, output, loops
 // Constraints: if/else statement, for loop, while loop, recursion
 
@@ -50,11 +54,35 @@ function createQuestion() {
 	filterTopic = 'none';
 	filterDifficulty = 'none';
 	
-	screenDisplay.innerHTML = "<div id='recentlyAddedQ'><h1>Question bank</h1><div id='qListFilterHead'></div><div id='questionsListDiv'></div></div><div id='addQ'><h1>Create a question</h1><form id='addQForm'><textarea form='addQForm' name='prompt' placeholder='Question' rows='5' cols='50'></textarea><br><input type='text' name='functionName' placeholder='Required function name'><br>Constraint: <select name='constraint'><option value='none'>none</option><option value='if/else statement'>if/else statement</option><option value='for loop'>for loop</option><option value='while loop'>while loop</option><option value='recursion'>recursion</option></select><br>Topic: <select name='topic'><option value='other'>other</option><option value='conditional execution'>conditional execution</option><option value='iteration'>iteration</option><option value='strings'>strings</option><option value='output'>output</option><option value='loops'>loops</option></select><br><br>Difficulty:<br><input type='radio' name='difficulty' value='1'> Easy<br><input type='radio' name='difficulty' value='2'> Medium<br><input type='radio' name='difficulty' value='3'> Hard<br><br><input type='text' name='testCaseInput1' placeholder='Test case 1: input'><br><input type='text' name='testCaseOutput1' placeholder='Test case 1: output'><br><br><input type='text' name='testCaseInput2' placeholder='Test case 2: input'><br><input type='text' name='testCaseOutput2' placeholder='Test case 2: output'><br><br><input type='text' name='testCaseInput3' placeholder='Test case 3: input'><br><input type='text' name='testCaseOutput3' placeholder='Test case 3: output'><br><br><input type='text' name='testCaseInput4' placeholder='Test case 4: input'><br><input type='text' name='testCaseOutput4' placeholder='Test case 4: output'><br><br><input type='text' name='testCaseInput5' placeholder='Test case 5: input'><br><input type='text' name='testCaseOutput5' placeholder='Test case 5: output'><br><br><input type='text' name='testCaseInput6' placeholder='Test case 6: input'><br><input type='text' name='testCaseOutput6' placeholder='Test case 6: output'><br><br><button type='button' id='addQButton' onclick='submitQuestion()'>Create question</button>&nbsp;<button type='button' id='resetAQFormButton' onclick='resetAQForm()'>Reset form</button><p id='error'></p></form></div>";
+	/*
+	var bankNode = document.createElement("DIV");
+	bankNode.setAttribute("id", "recentlyAddedQ");
+	
+	var hNode = document.createElement("H1");
+	var textNode = document.createTextNode("Question bank");
+	hNode.appendChild(textNode);
+	
+	bankNode.appendChild(hNode);
+	
+	var filterNode = document.createElement("DIV");
+	filterNode.setAttribute("id", "qListFilterHead");
+	
+	bankNode.appendChild(filterNode);
+	
+	var listNode = document.createElement("DIV");
+	listNode.setAttribute("id", "questionsListDiv");
+	
+	bankNode.appendChild(listNode);
+	*/
+	
+	splitScreen.innerHTML = "<div id='recentlyAddedQ'><h1>Question bank</h1><div id='qListFilterHead'></div><div id='questionsListDiv'></div></div>";
+	
+	splitScreen.innerHTML += "<div id='addQ'><h1>Create a question</h1><form id='addQForm'><textarea form='addQForm' name='prompt' placeholder='Question' rows='5' cols='50'></textarea><br><input type='text' name='functionName' placeholder='Required function name'><br><label>Constraint:&nbsp;<select name='constraint'><option value='none'>none</option><option value='if/else statement'>if/else statement</option><option value='for loop'>for loop</option><option value='while loop'>while loop</option><option value='recursion'>recursion</option></select></label>&nbsp;<label>Topic:&nbsp;<select name='topic'><option value='other'>other</option><option value='conditional execution'>conditional execution</option><option value='iteration'>iteration</option><option value='strings'>strings</option><option value='output'>output</option><option value='loops'>loops</option></select></label><br><br><label>Difficulty:<br><label><input type='radio' name='difficulty' value='1'>&nbsp;Easy</label><br><label><input type='radio' name='difficulty' value='2'>&nbsp;Medium</label><br><label><input type='radio' name='difficulty' value='3'>&nbsp;Hard</label></label><br><br><input type='text' name='testCaseInput1' placeholder='Test case 1: input'><br><input type='text' name='testCaseOutput1' placeholder='Test case 1: output'><br><br><input type='text' name='testCaseInput2' placeholder='Test case 2: input'><br><input type='text' name='testCaseOutput2' placeholder='Test case 2: output'><br><br><input type='text' name='testCaseInput3' placeholder='Test case 3: input'><br><input type='text' name='testCaseOutput3' placeholder='Test case 3: output'><br><br><input type='text' name='testCaseInput4' placeholder='Test case 4: input'><br><input type='text' name='testCaseOutput4' placeholder='Test case 4: output'><br><br><input type='text' name='testCaseInput5' placeholder='Test case 5: input'><br><input type='text' name='testCaseOutput5' placeholder='Test case 5: output'><br><br><input type='text' name='testCaseInput6' placeholder='Test case 6: input'><br><input type='text' name='testCaseOutput6' placeholder='Test case 6: output'><br><br><button type='button' id='addQButton' onclick='submitQuestion()'>Create question</button>&nbsp;<button type='button' id='resetAQFormButton' onclick='resetAQForm()'>Reset form</button><p id='error'></p></form></div>";
 	
 	var qListFilterHead = document.getElementById('qListFilterHead');
 	
-	qListFilterHead.innerHTML += "<form id='qListTopicFilterForm'>Topic: <select onchange='filterEditTopic(this.value)'><option value='none'>none</option><optgroup label='topic'><option value='other'>other</option><option value='conditional execution'>conditional execution</option><option value='iteration'>iteration</option><option value='strings'>strings</option><option value='output'>output</option><option value='loops'>loops</option></optgroup></select></form>&nbsp;<form id='qListDifficultyFilterForm'>Difficulty: <select onchange='filterEditDifficulty(this.value)'><option value='none'>none</option><optgroup label='Difficulty'><option value='1'>easy</option><option value='2'>medium</option><option value='3'>hard</option></optgroup></select></form><button type='button' id='filterQLButton' onclick='getFiltered2()'>Filter</button>&nbsp;<button type='button' id='resetQListFiltersButton' onclick='resetQListFilters()'>Reset filters</button><p id='filterError2'><p></form><p id='filterValues2'></p><br>";
+	qListFilterHead.innerHTML += "<form id='qListTopicFilterForm'><label>Topic:&nbsp;<select onchange='filterEditTopic(this.value)'><option value='none'>none</option><option value='other'>other</option><option value='conditional execution'>conditional execution</option><option value='iteration'>iteration</option><option value='strings'>strings</option><option value='output'>output</option><option value='loops'>loops</option></select></label></form>&nbsp;"
+	qListFilterHead.innerHTML += "<form id='qListDifficultyFilterForm'><label>Difficulty:&nbsp;<select onchange='filterEditDifficulty(this.value)'><option value='none'>none</option><option value='1'>easy</option><option value='2'>medium</option><option value='3'>hard</option></select></label></form><button type='button' id='filterQLButton' onclick='getFiltered2()'>Filter</button>&nbsp;<button type='button' id='resetQListFiltersButton' onclick='resetQListFilters()'>Reset filters</button><p id='filterError2'><p></form><p id='filterValues2'></p><br>";
 	
 	var questionsListDiv = document.getElementById('questionsListDiv');
 	var instructorMainForm = document.getElementById('instructorMainForm');
@@ -73,19 +101,25 @@ function createQuestion() {
 			window.location.replace("index.html");
 		}
 		else{
+			questionsListDiv.innerHTML += "<table><thead><tr><th>Question</th><th>Required function name</th><th>Topic</th><th>Difficulty</th></tr></thead><tbody id='CQQBTableBody'></tbody><tfoot></tfoot></table>";
+			
+			var CQQBTableBody = document.getElementById("CQQBTableBody");
+			
 			var item;
 			for (item = 0; item < newData.questions.length; item++) {
-				questionsListDiv.innerHTML += newData.questions[item].questionText+"<br>Question Id: "+newData.questions[item].questionId+"<br>Required function name: "+newData.questions[item].functionName+"<br>Topic: "+newData.questions[item].topic+"<br>Difficulty: ";
-					
+				
+				var difficulty;
 				if(newData.questions[item].difficulty === '1') {
-					questionsListDiv.innerHTML += "Easy<br><br>";
+					difficulty= "Easy";
 				}
 				else if(newData.questions[item].difficulty === '2') {
-					questionsListDiv.innerHTML += "Medium<br><br>";
+					difficulty = "Medium";
 				}
 				else if(newData.questions[item].difficulty === '3') {
-					questionsListDiv.innerHTML += "Hard<br><br>";
+					difficulty = "Hard";
 				}
+				
+				CQQBTableBody.innerHTML += "<tr><td>"+newData.questions[item].questionText+"</td><td>"+newData.questions[item].functionName+"</td><td>"+newData.questions[item].topic+"</td><td>"+difficulty+"</td></tr>";
 			}
 		}
 	});
@@ -121,7 +155,7 @@ function createExam() {
 	filterTopic = 'none';
 	filterDifficulty = 'none';
 	
-	screenDisplay.innerHTML = "<div id='examDraft'><h1>Draft of exam:</h1><div id='examDraftDiv'><form id='draftPointsForm'><input type='text' name='examName' id='examName' placeholder='Exam name'>&nbsp;<button type='button' id='checkedQButton' onclick='addAllChecked()'>Create Exam</button>&nbsp;<p id='examError'>Result:</p></form></div></div><div id='availableQ'><h1>Question bank</h1><div id='filterHead'></div><form id='selectQForm'></form></div>";
+	splitScreen.innerHTML = "<div id='examDraft'><h1>Draft of exam:</h1><div id='examDraftDiv'><form id='draftPointsForm'><input type='text' name='examName' id='examName' placeholder='Exam name'>&nbsp;<button type='button' id='checkedQButton' onclick='addAllChecked()'>Create Exam</button>&nbsp;<p id='examError'>Result:</p></form></div></div><div id='availableQ'><h1>Question bank</h1><div id='filterHead'></div><form id='selectQForm'></form></div>";
 	
 	var filterHead = document.getElementById('filterHead');
 	var selectQForm = document.getElementById('selectQForm');
@@ -477,19 +511,25 @@ function getFiltered2() {
 		else{
 			questionsListDiv.innerHTML = "";
 			
+			questionsListDiv.innerHTML += "<table><thead><tr><th>Question</th><th>Required function name</th><th>Topic</th><th>Difficulty</th></tr></thead><tbody id='CQQBTableBody'></tbody><tfoot></tfoot></table>";
+			
+			var CQQBTableBody = document.getElementById("CQQBTableBody");
+			
 			var item;
 			for (item = 0; item < newData.questions.length; item++) {
-				questionsListDiv.innerHTML += newData.questions[item].questionText+"<br>Question Id: "+newData.questions[item].questionId+"<br>Required function name: "+newData.questions[item].functionName+"<br>Topic: "+newData.questions[item].topic+"<br>Difficulty: ";
-					
+				
+				var difficulty;
 				if(newData.questions[item].difficulty === '1') {
-					questionsListDiv.innerHTML += "Easy<br><br>";
+					difficulty= "Easy";
 				}
 				else if(newData.questions[item].difficulty === '2') {
-					questionsListDiv.innerHTML += "Medium<br><br>";
+					difficulty = "Medium";
 				}
 				else if(newData.questions[item].difficulty === '3') {
-					questionsListDiv.innerHTML += "Hard<br><br>";
+					difficulty = "Hard";
 				}
+				
+				CQQBTableBody.innerHTML += "<tr><td>"+newData.questions[item].questionText+"</td><td>"+newData.questions[item].functionName+"</td><td>"+newData.questions[item].topic+"</td><td>"+difficulty+"</td></tr>";
 			}
 		}
 	});
@@ -535,7 +575,7 @@ function filterEditDifficulty(option) {
 
 function releaseExam() {
 	"use strict"; // Avoids error message
-	screenDisplay.innerHTML = "<div id='releaseExamDiv'><h1>Select an exam to release to students:</h1><br><div id='allExamsDiv'><form id='selectEForm'></form></div></div>";
+	splitScreen.innerHTML = "<div id='releaseExamDiv'><h1>Select an exam to release to students:</h1><br><div id='allExamsDiv'><form id='selectEForm'></form></div></div>";
 	
 	var allExamsDiv = document.getElementById('allExamsDiv');
 	var instructorMainForm = document.getElementById('instructorMainForm');
@@ -567,7 +607,7 @@ function releaseExam() {
 
 function releaseGrade() {
 	"use strict"; // Avoids error message
-	screenDisplay.innerHTML = "<div><h1>Select a graded exam to release:</h1><br><div id='gradedExamsDiv'><form id='selectGEForm'></form><p id='gError'>Result:</p><br></div></div>";
+	splitScreen.innerHTML = "<div><h1>Select a graded exam to release:</h1><br><div id='gradedExamsDiv'><form id='selectGEForm'></form><p id='gError'>Result:</p><br></div></div>";
 	
 	var gradedExamsDiv = document.getElementById('gradedExamsDiv');
 	var gError = document.getElementById('gError');

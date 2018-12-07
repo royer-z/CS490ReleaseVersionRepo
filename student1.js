@@ -17,7 +17,7 @@ fetch('checkLogin.php', {
 	}
 });
 
-var screenDisplay = document.getElementById('show');
+var screen = document.getElementById('screen');
 
 document.getElementById('takeE').onchange = function() {
 	"use strict"; // Avoids error message
@@ -31,7 +31,7 @@ document.getElementById('viewG').onchange = function() {
 
 function takeExam() {
 	"use strict"; // Avoids error message
-	screenDisplay.innerHTML = "<div id='chooseExamDiv'><h1>Choose an exam to take:</h1><div id='showOpenExamsDiv'><form id='selectExamForm'></form><p id='viewError'></p></div></div>";
+	screen.innerHTML = "<div id='chooseExamDiv'><h1>Choose an exam to take:</h1><div id='showOpenExamsDiv'><form id='selectExamForm'></form><p id='viewError'></p></div></div>";
 	
 	var error = document.getElementById('viewError');
 	var selectExamForm = document.getElementById('selectExamForm');
@@ -65,7 +65,7 @@ function takeExam() {
 
 function viewGrades() {
 	"use strict"; // Avoids error message
-	screenDisplay.innerHTML = "<div id='viewGradesDiv'><h1>Graded exams:</h1><div id='showGradesDiv'><form id='selectGradeForm'></form><p id='viewReportResult'>Result: </p></div></div>";
+	screen.innerHTML = "<div id='viewGradesDiv'><h1>Graded exams:</h1><div id='showGradesDiv'><form id='selectGradeForm'></form><p id='viewReportResult'>Result: </p></div></div>";
 	
 	var selectGradeForm = document.getElementById('selectGradeForm');
 	
@@ -99,7 +99,7 @@ function viewGrades() {
 function takeChecked() {
 	"use strict"; // Avoids error message
 	
-	var screenDisplay = document.getElementById('show');
+	var screen = document.getElementById('screen');
 	var error = document.getElementById('viewError');
 	
 	// Fetch exam
@@ -119,7 +119,7 @@ function takeChecked() {
 			window.location.replace("index.html");
 		}
 		else {
-			screenDisplay.innerHTML = "<div><h1>Please complete the "+newData.examName+" exam:</h1><div id='displayExamDiv'><form id='inputExamForm'></form><p id='answerError'>Result:</p></div></div>";
+			screen.innerHTML = "<div><h1>Please complete the "+newData.examName+" exam:</h1><div id='displayExamDiv'><form id='inputExamForm'></form><p id='answerError'>Result:</p></div></div>";
 			
 			var inputExamForm = document.getElementById('inputExamForm');
 			for (var item = 0; item < newData.questions.length; item++) {

@@ -3,24 +3,39 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Instructor (Release Candidate)</title>
+	<title>Instructor (Release Version)</title>
 	<link href="main.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-	<form id="instructorLogoutForm" action="logout.php">
-		<button type="submit" id="logoutButton">Log out</button>
-	</form>
-	<h1>Instructor: Please select an option below</h1>
-	<form id="instructorMainForm">
-		<input type="radio" id="createQ" name="option" value="createQ"> Create questions
-		<input type="radio" id="createE" name="option" value="createE"> Create an exam
-		<input type="radio" id="releaseE" name="option" value="releaseE"> Release an exam
-		<input type="radio" id="releaseG" name="option" value="releaseG"> Release grade
-	</form>
-	<br>
-	<div id="show" class="flex-container"></div>
+	<header>
+		<h1 id="header" class="centered">Online Exam System</h1>
+	</header>
+	<main>
+		<section>
+			<div class="formContainer">
+				<div class="formBox">
+					<form id="instructorLogoutForm" action="logout.php">
+						<button type="submit" id="logoutButton">Log out</button>
+					</form>
+					<label>Please select an option below:
+						<form id="instructorMainForm">
+							<label><input type="radio" id="createQ" name="option" value="createQ">Create questions</label>
+							<label><input type="radio" id="createE" name="option" value="createE">Create an exam</label>
+							<label><input type="radio" id="releaseE" name="option" value="releaseE">Release an exam</label>
+							<label><input type="radio" id="releaseG" name="option" value="releaseG">Release grade</label>
+						</form>
+					</label>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div id="splitScreen" class="flex-container"></div>
+		</section>
+	</main>
+	<footer>
+		<p id="footer" class="centered">&copy; December 11 2018</p>
+	</footer>
 	<script src="instructor.js"></script>
 </body>
 </html>
-
