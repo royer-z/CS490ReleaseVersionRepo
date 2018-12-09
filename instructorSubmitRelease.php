@@ -8,7 +8,7 @@ if ($_SESSION['loggedIn'] == 'false') {
 else {
 	$examId = $_POST['pickedE'];
 
-	if($examId === '') { // Detect if ID form field is empty
+	if(empty($examId)) { // Detect if ID form field is empty
 		echo json_encode('Please choose an exam');
 	}
 	else { // Send data using cURL

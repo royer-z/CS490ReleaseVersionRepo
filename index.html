@@ -9,22 +9,18 @@
 
 <body>
 	<header>
-		<h1 id="header" class="centered">Online Exam System</h1>
+		<h1 id="header" class="centered whiteFont">Online Exam System</h1>
 	</header>
 	<main>
 		<section>
 			<div class="formContainer">
 				<div class="formBox">
-					<form id="loginForm" class="centered">
-						<label>UCID:<br>
-							<input  type="text" name="username">
-						</label>
+					<form id="loginForm">
+						<input type="text" name="username" placeholder="UCID">
 						<br>
-						<label>Password:<br>
-							<input type="password" name="password">
-						</label>
+						<input type="password" name="password" placeholder="Password">
 						<br><br>
-						<button type="submit" id="loginButton">Log in</button>
+						<button type="submit" class="button whiteFont">Log in</button>
 					</form>
 					<p id="loginFormResult" class="centered"></p>
 				</div>
@@ -32,7 +28,7 @@
 		</section>
 	</main>
 	<footer>
-		<p id="footer" class="centered">&copy; December 11 2018</p>
+		<p id="footer" class="centered whiteFont">&copy; December 11 2018</p>
 	</footer>
 	<script src="myscript.js"></script>
 </body>

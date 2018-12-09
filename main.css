@@ -3,10 +3,101 @@
 html, body {
 	margin: 0;
 	height: 100%;
+	width: 100%;
+	font-family: "Bookman Old Style", "Arial", "Times New Roman", sans-serif;
+	font-size: 1em;
+	background-color: #E74C3C;
+}
+
+table, th, td {
+	border: solid #2C3E50;
+	border-collapse: collapse;
+}
+
+th {
+	font-size: 1.5em;
+}
+
+td {
+	font-size: 1.25em;
+}
+
+.whiteFont {
+	color: #FFFFFF;
+}
+
+.left {
+	text-align: left;
 }
 
 .centered {
 	text-align: center;
+}
+
+.button {
+	background-color: #2C3E50;
+	font-size: 1.5em;
+	font-family: "Bookman Old Style", "Arial", "Times New Roman", sans-serif;
+	border: none;
+}
+
+#header {
+	font-size: 3em;
+}
+
+#footer {
+}
+
+input, select, textarea {
+	font-family: "Bookman Old Style", "Arial", "Times New Roman", sans-serif;
+	font-size: 1.5em;
+	color: #2C3E50;
+	border: solid #2C3E50;
+	margin-top: 1em;
+}
+
+::placeholder {
+	color: #2C3E50;
+}
+
+.formContainer {
+	text-align: center;
+}
+
+.formBox {
+	display: inline-block;
+	padding-left: 10em;
+	padding-right: 10em;
+	background-color: #ECF0F1;
+}
+
+#loginForm {
+	margin: 1em;
+}
+
+#loginFormResult {
+	color: #2C3E50;
+}
+
+#instructorContainer {
+	text-align: center;
+}
+
+#instructorBox {
+	display: inline-block;
+	width: 100%;
+	background-color: #ECF0F1;
+}
+
+#instructorMainHeading {
+	font-size: 2em;
+	color: #2C3E50;
+}
+
+#instructorMainForm {
+	margin: .5em;
+	color: #2C3E50;
+	font-size: 1.5em;
 }
 
 .flex-container {
@@ -18,45 +109,127 @@ html, body {
 	height: 100%;
 }
 
+.instructorHeadings {
+	font-size: 2em;
+	text-align: center;
+}
+
+.filterLabels {
+	font-size: 1.5em;
+}
+
 #recentlyAddedQ {
-	background-color: #FFEFBF;
 	flex: 1;
-	height: 150em;
+	background-color: #ECF0F1;
+	color: #2C3E50;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+#qListTopicFilterForm {
+	display: inline-block;
+}
+
+#qListDifficultyFilterForm {
+	display: inline-block;
+	margin-left: 1em;
+}
+
+#filterQLButton {
+	margin-left: 1em;
+}
+
+#resetQListFiltersButton {
+	margin-left: .25em;
+}
+
+.easyDifficulty {
+	color: green;
+}
+
+.mediumDifficulty {
+	color: orange;
+}
+
+.hardDifficulty {
+	color: red;
 }
 
 #addQ {
-	background-color: #C4FFD7;
+	background-color: #ECF0F1;
 	flex: 1;
-	height: 150em;
+	color: #2C3E50;
+	padding-left: 2em;
+	padding-right: 2em;
 }
 
 #examDraft {
-	background-color: #C0FFF1;
 	flex: 1;
-	height: 150em;
+	background-color: #ECF0F1;
+	color: #2C3E50;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+#checkedQButton {
+	margin-left: 1em;
+}
+
+#examError {
+	display: inline-block;
+	margin: 0;
+	margin-left: 1em;
+}
+
+#CEEDTable {
+	margin-top: 1em;
+}
+
+.pointsInput {
+	margin: .25em;
 }
 
 #availableQ {
-	background-color: #FFEFC0;
 	flex: 1;
-	height: 150em;
+	background-color: #ECF0F1;
+	color: #2C3E50;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+#topicFilterForm {
+	display: inline-block;
+}
+
+#difficultyFilterForm {	
+	display: inline-block;
+	margin-left: 1em;
+}
+
+#filterButton {
+	margin-left: 1em;
+}
+
+#resetFiltersButton {
+	margin-left: .25em;
 }
 
 #releaseExamDiv {
-	background-color: #F6FFC4;
+	color: #2C3E50;
+	background-color: #ECF0F1;
+	width: 100%;
 }
 
-#loginButton {
-	color: white;
-	background-color:#8F2021;	
+#releaseGExamDiv {
+	color: #2C3E50;
+	background-color: #ECF0F1;
+	width: 100%;
 }
 
-#logoutButton {
-	color: white;
-	background-color: #8F2021;
+.redHighlight {
+	color: lightcoral;
 }
 
-table, th, td {
-	border: 1px solid #000000;
-	border-collapse: collapse;
+.greenHighlight {
+	color: greenyellow;
 }

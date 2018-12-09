@@ -194,14 +194,27 @@ function viewChecked() {
 		else{
 			viewGradesDiv.innerHTML = "";
 			if (newData.gradeReleased === "true") {
+				viewGradesDiv.innerHTML += "<table><thead><tr><th>Question</th><th>Your answer</th><th>Total points</th><th>Adjustment</th><th>Adjustment reason</th><th>Comment</th><th>Points breakdown</th></tr></thead><tbody id='reportTableBody'></tbody><tfoot></tfoot></table>";
+				
+				var reportTableBody = document.getElementById("reportTableBody");
+	
 				var item;
 				for (item = 0; item < newData.questions.length; item++) {
-					viewGradesDiv.innerHTML += "<strong>Question:</strong> "+newData.questions[item].questionText+"<br><strong>Answer:</strong>"+newData.questions[item].answerText+"<br><strong>Total points:</strong>"+newData.questions[item].grade+"<br>";
-					var iter;
-					for (iter = 0; iter < newData.questions[item].pointBreakdown.length; iter++) {
-						viewGradesDiv.innerHTML += "<strong>Points:</strong> "+newData.questions[item].pointBreakdown[iter].points+"<br>"+"<strong>Reason:</strong> "+newData.questions[item].pointBreakdown[iter].reason+"<br>";
+					var questionId = newData.questions[item].questionId;
+					
+					reportTableBody.innerHTML += "<tr><td>"+newData.questions[item].questionText+"</td><td>"+newData.questions[item].answerText+"</td><td>"+newData.questions[item].grade+"</td><td>"+newData.questions[item].instructorAdjustment+"</td><td>"+newData.questions[item].instructorAdjustmentReason+"</td><td>"+newData.questions[item].comment+"</td><td><table><thead><tr><th>Points</th><th>Reason</th></tr></thead><tbody id='forQ"+questionId+"'></tbody><tfoot></tfoot></table></td></tr>";
+					
+					var forQ = document.getElementById("forQ"+questionId);
+					
+					var pb;
+					for (pb = 0; pb < newData.questions[item].pointBreakdown.length; pb++) {
+						if (newData.questions[item].pointBreakdown[pb].points[0] === "0") {
+							forQ.innerHTML += "<tr><td class='redHighlight'>"+newData.questions[item].pointBreakdown[pb].points+"</td><td>"+newData.questions[item].pointBreakdown[pb].reason+"</td></tr>";
+						}
+						else {
+							forQ.innerHTML += "<tr><td class='greenHighlight'>"+newData.questions[item].pointBreakdown[pb].points+"</td><td>"+newData.questions[item].pointBreakdown[pb].reason+"</td></tr>";
+						}
 					}
-					viewGradesDiv.innerHTML += "<strong>Adjustment:</strong>"+newData.questions[item].instructorAdjustment+"<br><strong>Reason:</strong>"+newData.questions[item].instructorAdjustmentReason+"<br><strong>Comment:</strong>"+newData.questions[item].comment+"<br><br>";
 				}
 				viewGradesDiv.innerHTML += "<br><strong>Final exam grade:</strong>"+newData.grade+"<br><br>";
 			}
