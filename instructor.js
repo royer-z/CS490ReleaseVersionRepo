@@ -101,7 +101,7 @@ function createQuestion() {
 			window.location.replace("index.html");
 		}
 		else{
-			questionsListDiv.innerHTML += "<table><thead><tr><th>&nbsp;Question&nbsp;</th><th>&nbsp;Topic&nbsp;</th><th>&nbsp;Difficulty&nbsp;</th></tr></thead><tbody id='CQQBTableBody'></tbody><tfoot></tfoot></table>";
+			questionsListDiv.innerHTML += "<table><thead><tr><th>&nbsp;Question&nbsp;</th><th>&nbsp;Topic&nbsp;</th><th>&nbsp;Difficulty&nbsp;</th></tr></thead><tbody id='CQQBTableBody'></tbody><tfoot></tfoot></table><br>";
 			
 			var CQQBTableBody = document.getElementById("CQQBTableBody");
 			
@@ -549,7 +549,7 @@ function getFiltered2() {
 		else{
 			questionsListDiv.innerHTML = "";
 			
-			questionsListDiv.innerHTML += "<table><thead><tr><th>&nbsp;Question&nbsp;</th><th>&nbsp;Topic&nbsp;</th><th>&nbsp;Difficulty&nbsp;</th></tr></thead><tbody id='CQQBTableBody'></tbody><tfoot></tfoot></table>";
+			questionsListDiv.innerHTML += "<table><thead><tr><th>&nbsp;Question&nbsp;</th><th>&nbsp;Topic&nbsp;</th><th>&nbsp;Difficulty&nbsp;</th></tr></thead><tbody id='CQQBTableBody'></tbody><tfoot></tfoot></table><br>";
 			
 			var CQQBTableBody = document.getElementById("CQQBTableBody");
 			
@@ -674,7 +674,7 @@ function releaseGrade() {
 			var item;
 			for (item = 0; item < newData.examInstances.length; item++) {
 				if (newData.examInstances[item].gradeReleased === "false") {
-					var examAndStudentId = [newData.examInstances[item].studentId, newData.examInstances[item].examId];
+					var examAndStudentId = newData.examInstances[item].studentId+","+newData.examInstances[item].examId;
 					
 					selectGEForm.innerHTML += "<input type='radio' name='examInfo' value="+examAndStudentId+"><br><label class='filterLabels'>Exam: "+newData.examInstances[item].examName+"</label><br><label class='filterLabels'>Student: "+newData.examInstances[item].studentId+"</label><br>";
 				}
@@ -804,7 +804,7 @@ function radioAdjustExam() {
 			gError.innerHTML = "";
 			onlyReleaseGradedExamForm.innerHTML = "";
 			if (newData.gradeReleased === "false") {
-				onlyReleaseGradedExamForm.innerHTML += "<table><thead><tr><th>Question</th><th>Student's answer</th><th>Total points</th><th>Adjustment</th><th>Adjustment reason</th><th>Comment</th><th>Points breakdown</th></tr></thead><tbody id='RGAGTableBody'></tbody><tfoot></tfoot></table><br><br><button type='button' id='submitAdjustmentsButton' class='button whiteFont' onclick='submitExamAdjustments()'>Submit adjustments</button><br><p id='submitAdjustmentsResult'></p>";
+				onlyReleaseGradedExamForm.innerHTML += "<table><thead><tr><th>&nbsp;Question&nbsp;</th><th>&nbsp;Student's answer&nbsp;</th><th>&nbsp;Total points&nbsp;</th><th>&nbsp;Adjustment&nbsp;</th><th>&nbsp;Adjustment reason&nbsp;</th><th>&nbsp;Comment&nbsp;</th><th>&nbsp;Points breakdown&nbsp;</th></tr></thead><tbody id='RGAGTableBody'></tbody><tfoot></tfoot></table><br><br><button type='button' id='submitAdjustmentsButton' class='button whiteFont' onclick='submitExamAdjustments()'>Submit adjustments</button><br><p id='submitAdjustmentsResult'></p>";
 			
 				var RGAGTableBody = document.getElementById("RGAGTableBody");
 
@@ -812,23 +812,23 @@ function radioAdjustExam() {
 				for (item = 0; item < newData.questions.length; item++) {
 					var questionId = newData.questions[item].questionId;
 					
-					RGAGTableBody.innerHTML += "<tr><td>"+newData.questions[item].questionText+"</td><td>"+newData.questions[item].answerText+"</td><td>"+newData.questions[item].grade+"</td><td><input type='text' name='adjustments[]' placeholder='Adjustment'></td><td><input type='text' name='adjustmentReasons[]' placeholder='Adjustment reason'></td><td><input type='text' name='comments[]' placeholder='Comment'></td><td><table><thead><tr><th>Points</th><th>Reason</th></tr></thead><tbody id='forQ"+questionId+"'></tbody><tfoot></tfoot></table></td></tr>";
+					RGAGTableBody.innerHTML += "<tr><td class='left'>"+newData.questions[item].questionText+"</td><td class='left'>"+newData.questions[item].answerText+"</td><td class='left'>"+newData.questions[item].grade+"</td><td><input type='text' name='adjustments[]' placeholder='Adjustment' size='9'></td><td><input type='text' name='adjustmentReasons[]' placeholder='Adjustment reason' size='15'></td><td><input type='text' name='comments[]' placeholder='Comment' size='7'></td><td><table><thead><tr><th>&nbsp;Points&nbsp;</th><th>&nbsp;Reason&nbsp;</th></tr></thead><tbody id='forQ"+questionId+"'></tbody><tfoot></tfoot></table></td></tr>";
 					
 					var forQ = document.getElementById("forQ"+questionId);
 					
 					var pb;
 					for (pb = 0; pb < newData.questions[item].pointBreakdown.length; pb++) {
 						if (newData.questions[item].pointBreakdown[pb].points[0] === "0") {
-							forQ.innerHTML += "<tr><td class='redHighlight'>"+newData.questions[item].pointBreakdown[pb].points+"</td><td>"+newData.questions[item].pointBreakdown[pb].reason+"</td></tr>";
+							forQ.innerHTML += "<tr><td class='redHighlight'>"+newData.questions[item].pointBreakdown[pb].points+"</td><td class='left'>"+newData.questions[item].pointBreakdown[pb].reason+"</td></tr>";
 						}
 						else {
-							forQ.innerHTML += "<tr><td class='greenHighlight'>"+newData.questions[item].pointBreakdown[pb].points+"</td><td>"+newData.questions[item].pointBreakdown[pb].reason+"</td></tr>";
+							forQ.innerHTML += "<tr><td class='greenHighlight'>"+newData.questions[item].pointBreakdown[pb].points+"</td><td class='left'>"+newData.questions[item].pointBreakdown[pb].reason+"</td></tr>";
 						}
 					}
 				}
 			}
 			else {
-				onlyReleaseGradedExamForm.innerHTML = "NO EXAM GRADES TO RELEASE";
+				onlyReleaseGradedExamForm.innerHTML = "No exam grades to release.";
 			}
 		}
 	});
@@ -859,7 +859,7 @@ function submitExamAdjustments() {
 			window.location.replace("index.html");
 		}
 		else{
-			submitAdjustmentsResult.innerHTML = "EXAM SUBMITTED!";
+			submitAdjustmentsResult.innerHTML = "Exam submitted!";
 		}
 	}); 
 }

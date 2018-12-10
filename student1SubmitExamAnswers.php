@@ -9,7 +9,7 @@ else {
 	$answerText = $_POST['studentAnswerText'];
 	$questIds = $_POST['questIds']; 
 
-	if(empty($answerText) || empty($questIds)) { // If no answers were given
+	if(empty($questIds)) { // If no answers were given
 		echo json_encode('empty');
 	}
 	else { // Send data using cURL

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="index.html" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131888180577631953" remote="131888181130000000" Dst="1" />
-<file name="instructor.html" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131888106667655536" remote="131888106710000000" Dst="1" />
-<file name="instructor.js" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131888333559627053" remote="131888333590000000" Dst="1" />
+<file name="instructor.html" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131888809565800982" remote="131888809760000000" Dst="1" />
+<file name="instructor.js" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131888968997550079" remote="131888969470000000" Dst="1" />
 <file name="instructorAddQ.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886072146236026" remote="131886080250000000" Dst="1" />
 <file name="instructorCreateE.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886066527877255" remote="131886069500000000" Dst="1" />
 <file name="instructorDeleteQ.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131880067924204445" remote="131879957050000000" Dst="1" />
@@ -11,19 +11,19 @@
 <file name="instructorRequestFilter.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886075079427046" remote="131886080250000000" Dst="1" />
 <file name="instructorShowQ.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886062199218353" remote="131886063570000000" Dst="1" />
 <file name="instructorSubmitExam.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886074046308294" remote="131886080250000000" Dst="1" />
-<file name="instructorSubmitGraded.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131887073293015105" remote="131887073320000000" Dst="1" />
+<file name="instructorSubmitGraded.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131888931457543898" remote="131888931530000000" Dst="1" />
 <file name="instructorSubmitRelease.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131887070783837769" remote="131887070830000000" Dst="1" />
-<file name="instructorViewGradedExam.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886079143039096" remote="131886080260000000" Dst="1" />
+<file name="instructorViewGradedExam.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131888969134357061" remote="131888969390000000" Dst="1" />
 <file name="login.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886055168330843" remote="131886063570000000" Dst="1" />
-<file name="main.css" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131888309814728457" remote="131888310730000000" Dst="1" />
+<file name="main.css" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131888862356287463" remote="131888862360000000" Dst="1" />
 <file name="myscript.js" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886155922246410" remote="131886186250000000" Dst="1" />
 <file name="README.md" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131880066939801583" remote="131879957060000000" Dst="1" />
-<file name="student1.html" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886168204164293" remote="131886186250000000" Dst="1" />
-<file name="student1.js" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131887096810000000" remote="131887096860000000" Dst="1" />
+<file name="student1.html" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131888852878866790" remote="131888852900000000" Dst="1" />
+<file name="student1.js" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131888940423407503" remote="131888940430000000" Dst="1" />
 <file name="student1GetExams.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886087010000000" remote="131886091800000000" Dst="1" />
 <file name="student1GetGrades.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886087745430017" remote="131886091800000000" Dst="1" />
-<file name="student1RequestExamToTake.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886088681663049" remote="131886091800000000" Dst="1" />
-<file name="student1SubmitExamAnswers.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886089884191354" remote="131886091800000000" Dst="1" />
+<file name="student1RequestExamToTake.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131888841839759626" remote="131888841840000000" Dst="1" />
+<file name="student1SubmitExamAnswers.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131888869571904214" remote="131888869580000000" Dst="1" />
 <file name="student1ViewReport.php" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886090900881176" remote="131886091800000000" Dst="1" />
 <file name="student2.html" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886169982270666" remote="131886186250000000" Dst="1" />
 <file name="student2.js" server="afsconnect1.njit.edu//afs/cad.njit.edu/u/r/v/rvz2/public_html/" local="131886169940352052" remote="131886186250000000" Dst="1" />

@@ -20,7 +20,7 @@ else {
 	else { // Send data using cURL
 		$formData;
 		$formData->studentId = $studentId;
-		$formDat->examId = $examId;
+		$formData->examId = $examId;
 		$formData->questionIds = $questionIds;
 		$formData->adjustments = $adjustments;
 		$formData->adjustmentReasons = $adjustmentReasons;
