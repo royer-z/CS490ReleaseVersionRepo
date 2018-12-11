@@ -66,7 +66,6 @@ function takeExam() {
 			}
 		}
 	});
-	
 }
 
 function viewGrades() {

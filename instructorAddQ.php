@@ -25,7 +25,7 @@ else {
 	$testCaseInput6 = $_POST['testCaseInput6'];
 	$testCaseOutput6 = $_POST['testCaseOutput6'];
 
-	if(empty($questionText) || empty($functionName) || !($difficulty === '1' || $difficulty === '2' || $difficulty === '3')) { // Detect if any form field is empty
+	if(empty($questionText) || empty($functionName)) { // Detect if any form field is empty
 		echo json_encode('empty');
 	}
 	else { // Send data using cURL

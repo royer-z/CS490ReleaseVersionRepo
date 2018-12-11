@@ -281,4 +281,17 @@ input, select, textarea {
 	padding-left: 2em;
 }
 
+#student2MainForm {
+	margin: .5em;
+	color: #2C3E50;
+	font-size: 1.5em;
+}
+
+#student2TakingExamDiv {
+	width: 100%;
+	background-color: #ECF0F1;
+	color: #2C3E50;
+	padding-left: 2em;
+}
+
 

@@ -77,7 +77,7 @@ function createQuestion() {
 	
 	splitScreen.innerHTML = "<div id='recentlyAddedQ'><h1 class='instructorHeadings'>Question bank</h1><div id='qListFilterHead'></div><div id='questionsListDiv'></div></div>";
 	
-	splitScreen.innerHTML += "<div id='addQ'><h1 class='instructorHeadings'>Create a question</h1><form id='addQForm'><textarea form='addQForm' name='prompt' placeholder='Question' rows='3' cols='54.5'></textarea><br><input type='text' name='functionName' placeholder='Required function name'><br><label class='filterLabels'>Constraint:&nbsp;</label><select name='constraint'><option value='none'>none</option><option value='if/else statement'>if/else statement</option><option value='for loop'>for loop</option><option value='while loop'>while loop</option><option value='recursion'>recursion</option></select>&nbsp;<label class='filterLabels'>Topic:&nbsp;</label><select name='topic'><option value='other'>other</option><option value='conditional execution'>conditional execution</option><option value='iteration'>iteration</option><option value='strings'>strings</option><option value='output'>output</option><option value='loops'>loops</option></select><br><br><label class='filterLabels'>Difficulty:&nbsp;</label><input type='radio' name='difficulty' value='1'><label class='filterLabels easyDifficulty'>Easy&nbsp;</label><input type='radio' name='difficulty' value='2'><label class='filterLabels mediumDifficulty'>Medium&nbsp;</label><input type='radio' name='difficulty' value='3'><label class='filterLabels hardDifficulty'>Hard&nbsp;</label><br><br><input type='text' name='testCaseInput1' placeholder='Test case 1: input'>&nbsp;&nbsp;<input type='text' name='testCaseOutput1' placeholder='Test case 1: output'><br><input type='text' name='testCaseInput2' placeholder='Test case 2: input'>&nbsp;&nbsp;<input type='text' name='testCaseOutput2' placeholder='Test case 2: output'><br><input type='text' name='testCaseInput3' placeholder='Test case 3: input'>&nbsp;&nbsp;<input type='text' name='testCaseOutput3' placeholder='Test case 3: output'><br><input type='text' name='testCaseInput4' placeholder='Test case 4: input'>&nbsp;&nbsp;<input type='text' name='testCaseOutput4' placeholder='Test case 4: output'><br><input type='text' name='testCaseInput5' placeholder='Test case 5: input'>&nbsp;&nbsp;<input type='text' name='testCaseOutput5' placeholder='Test case 5: output'><br><input type='text' name='testCaseInput6' placeholder='Test case 6: input'>&nbsp;&nbsp;<input type='text' name='testCaseOutput6' placeholder='Test case 6: output'><br><br><button type='button' id='addQButton' class='button whiteFont' onclick='submitQuestion()'>Create question</button>&nbsp;<button type='button' id='resetAQFormButton' class='button whiteFont' onclick='resetAQForm()'>Reset form</button><p id='error'></p></form></div>";
+	splitScreen.innerHTML += "<div id='addQ'><h1 class='instructorHeadings'>Create a question</h1><form id='addQForm'><textarea form='addQForm' name='prompt' placeholder='Question' rows='3' cols='54.5'></textarea><br><input type='text' name='functionName' placeholder='Required function name'><br><label class='filterLabels'>Constraint:&nbsp;</label><select name='constraint'><option value='none'>none</option><option value='if/else statement'>if/else statement</option><option value='for loop'>for loop</option><option value='while loop'>while loop</option><option value='recursion'>recursion</option></select>&nbsp;<label class='filterLabels'>Topic:&nbsp;</label><select name='topic'><option value='other'>other</option><option value='conditional execution'>conditional execution</option><option value='iteration'>iteration</option><option value='strings'>strings</option><option value='output'>output</option><option value='loops'>loops</option></select><br><br><label class='filterLabels'>Difficulty:&nbsp;</label><input type='radio' name='difficulty' value='1' checked='checked'><label class='filterLabels easyDifficulty'>Easy&nbsp;</label><input type='radio' name='difficulty' value='2'><label class='filterLabels mediumDifficulty'>Medium&nbsp;</label><input type='radio' name='difficulty' value='3'><label class='filterLabels hardDifficulty'>Hard&nbsp;</label><br><br><input type='text' name='testCaseInput1' placeholder='Test case 1: input'>&nbsp;&nbsp;<input type='text' name='testCaseOutput1' placeholder='Test case 1: output'><br><input type='text' name='testCaseInput2' placeholder='Test case 2: input'>&nbsp;&nbsp;<input type='text' name='testCaseOutput2' placeholder='Test case 2: output'><br><input type='text' name='testCaseInput3' placeholder='Test case 3: input'>&nbsp;&nbsp;<input type='text' name='testCaseOutput3' placeholder='Test case 3: output'><br><input type='text' name='testCaseInput4' placeholder='Test case 4: input'>&nbsp;&nbsp;<input type='text' name='testCaseOutput4' placeholder='Test case 4: output'><br><input type='text' name='testCaseInput5' placeholder='Test case 5: input'>&nbsp;&nbsp;<input type='text' name='testCaseOutput5' placeholder='Test case 5: output'><br><input type='text' name='testCaseInput6' placeholder='Test case 6: input'>&nbsp;&nbsp;<input type='text' name='testCaseOutput6' placeholder='Test case 6: output'><br><br><button type='button' id='addQButton' class='button whiteFont' onclick='submitQuestion()'>Create question</button>&nbsp;<button type='button' id='resetAQFormButton' class='button whiteFont' onclick='resetAQForm()'>Reset form</button><p id='error'></p></form></div>";
 	
 	var qListFilterHead = document.getElementById('qListFilterHead');
 	
@@ -131,6 +131,8 @@ function createQuestion() {
 function resetAQForm() {
 	"use strict"; // Avoids error message
 	document.getElementById('addQForm').reset();
+	var error = document.getElementById('error');
+	error.innerHTML = "";
 }
 
 function resetQListFilters() {
@@ -448,18 +450,18 @@ function getFiltered() {
 
 function filterListTopic(option) {
 	"use strict"; // Avoids error message
-	var filterValues = document.getElementById('filterValues');
+	//var filterValues = document.getElementById('filterValues');
 	
 	if (option === 'none') {
 		var topicValue = filterTopic;
 		filterTopic = 'none';
-		filterValues.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
+		//filterValues.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
 		console.log("REMOVED:"+topicValue);
 		console.log("AFTERADD: "+"T:"+filterTopic+"D:"+filterDifficulty);
 	}
 	else {
 		filterTopic = option;
-		filterValues.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
+		//filterValues.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
 		console.log("ADDED:"+option);
 		console.log("AFTERADD: "+"T:"+filterTopic+"D:"+filterDifficulty);
 	}
@@ -467,18 +469,18 @@ function filterListTopic(option) {
 
 function filterListDifficulty(option) {
 	"use strict"; // Avoids error message
-	var filterValues = document.getElementById('filterValues');
+	//var filterValues = document.getElementById('filterValues');
 	
 	if (option === 'none') {
 		var difficultyValue = filterDifficulty;
 		filterDifficulty = 'none';
-		filterValues.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
+		//filterValues.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
 		console.log("REMOVED:"+difficultyValue);
 		console.log("AFTERADD: "+"T:"+filterTopic+"D:"+filterDifficulty);
 	}
 	else {
 		filterDifficulty = option;
-		filterValues.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
+		//filterValues.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
 		console.log("ADDED:"+option);
 		console.log("AFTERADD: "+"T:"+filterTopic+"D:"+filterDifficulty);
 	}
@@ -579,18 +581,18 @@ function getFiltered2() {
 
 function filterEditTopic(option) {
 	"use strict"; // Avoids error message
-	var filterValues2 = document.getElementById('filterValues2');
+	//var filterValues2 = document.getElementById('filterValues2');
 	
 	if (option === 'none') {
 		var topicValue = filterTopic;
 		filterTopic = 'none';
-		filterValues2.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
+		//filterValues2.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
 		console.log("REMOVED:"+topicValue);
 		console.log("AFTERADD: "+"T:"+filterTopic+"D:"+filterDifficulty);
 	}
 	else {
 		filterTopic = option;
-		filterValues2.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
+		//filterValues2.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
 		console.log("ADDED:"+option);
 		console.log("AFTERADD: "+"T:"+filterTopic+"D:"+filterDifficulty);
 	}
@@ -598,18 +600,18 @@ function filterEditTopic(option) {
 
 function filterEditDifficulty(option) {
 	"use strict"; // Avoids error message
-	var filterValues2 = document.getElementById('filterValues2');
+	//var filterValues2 = document.getElementById('filterValues2');
 	
 	if (option === 'none') {
 		var difficultyValue = filterDifficulty;
 		filterDifficulty = 'none';
-		filterValues2.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
+		//filterValues2.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
 		console.log("REMOVED:"+difficultyValue);
 		console.log("AFTERADD: "+"T:"+filterTopic+"D:"+filterDifficulty);
 	}
 	else {
 		filterDifficulty = option;
-		filterValues2.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
+		//filterValues2.innerHTML = "Selected: "+filterTopic+", "+filterDifficulty;
 		console.log("ADDED:"+option);
 		console.log("AFTERADD: "+"T:"+filterTopic+"D:"+filterDifficulty);
 	}
@@ -722,22 +724,31 @@ function submitQuestion() {
 					window.location.replace("index.html");
 				}
 				else{
+					error.innerHTML = "Question created!";
 					questionsListDiv.innerHTML = ""; // Refresh Added Questions Div
+					questionsListDiv.innerHTML += "<table><thead><tr><th>&nbsp;Question&nbsp;</th><th>&nbsp;Topic&nbsp;</th><th>&nbsp;Difficulty&nbsp;</th></tr></thead><tbody id='CQQBTableBody'></tbody><tfoot></tfoot></table><br>";
+			
+					var CQQBTableBody = document.getElementById("CQQBTableBody");
+
 					var item;
 					for (item = 0; item < newData.questions.length; item++) {
-						questionsListDiv.innerHTML += newData.questions[item].questionText+"<br>Question Id: "+newData.questions[item].questionId+"<br>Required function name: "+newData.questions[item].functionName+"<br>Topic: "+newData.questions[item].topic+"<br>Difficulty: ";
-						
+						var difficulty;
+						var difficultyClass;
 						if(newData.questions[item].difficulty === '1') {
-							questionsListDiv.innerHTML += "Easy<br><br>";
+							difficulty= "Easy";
+							difficultyClass = "easyDifficulty";
 						}
 						else if(newData.questions[item].difficulty === '2') {
-							questionsListDiv.innerHTML += "Medium<br><br>";
+							difficulty = "Medium";
+							difficultyClass = "mediumDifficulty";
 						}
 						else if(newData.questions[item].difficulty === '3') {
-							questionsListDiv.innerHTML += "Hard<br><br>";
+							difficulty = "Hard";
+							difficultyClass = "hardDifficulty";
 						}
+
+						CQQBTableBody.innerHTML += "<tr><td class='left'>"+newData.questions[item].questionText+"</td><td class='centered'>"+newData.questions[item].topic+"</td><td class='"+difficultyClass+" centered'>"+difficulty+"</td></tr>";
 					}
-					
 				}
 			});
 		}

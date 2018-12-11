@@ -3,21 +3,36 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Student (Release Candidate)</title>
+	<title>Student (Release Version)</title>
 	<link href="main.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-	<form id='studentLogoutForm' action="logout.php">
-		<button type='submit' id='logoutButton'>Log out</button>
-	</form>
-	<h1>Student: Please select an option below</h1>
-	<form id="student2MainForm">
-		<input type="radio" id="takeE" name="option" value="takeE"> Take an Exam
-		<input type="radio" id="viewG" name="option" value="viewG"> View exam grades
-	</form>
-	<br>
-	<div id="screen"></div>
+	<header>
+		<form id="studentLogoutForm" action="logout.php">
+			<button type="submit" class="button whiteFont">Log out</button>
+		</form>
+		<h1 id="header" class="centered whiteFont">Online Exam System</h1>
+	</header>
+	<main>
+		<section>
+			<div id="studentContainer">
+				<div id="studentBox">
+					<h1 id="studentMainHeading">Please select an option below:</h1>
+					<form id="student2MainForm">
+						<label><input type="radio" id="takeE" name="option" value="takeE">Take an Exam</label>
+						<label><input type="radio" id="viewG" name="option" value="viewG">View exam grades</label>
+					</form>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div id="screen" class="flex-container"></div>
+		</section>
+	</main>
+	<footer>
+		<p id="footer" class="centered whiteFont">&copy; December 11 2018</p>
+	</footer>
 	<script src="student2.js"></script>
 </body>
 </html>
